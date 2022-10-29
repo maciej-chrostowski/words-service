@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SearchedRegex {
-    private String value;
+    private String regex;
+    private String letters;
 }
