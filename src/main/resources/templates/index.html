@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>test</p>
+
+<p th:text="${testAttr}"></p>
+
+<form action="#" th:object="${searchedRegex}" method="post">
+    <input type="text" id="regex" name="regex" th:field="*{value}"/>
+    <button type="submit" name="searchWords">Search</button>
+</form>
+
+<table>
+    <tbody>
+        <tr th:each="word : ${matchingWords}">
+            <td th:text="${{word.value}}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
