@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import static org.apache.commons.lang3.StringUtils.*;
+
 @Controller
 @AllArgsConstructor
 public class IndexController {
@@ -28,23 +30,26 @@ public class IndexController {
     @PostMapping(params = "searchWords")
     public String searchWords(Model model, @ModelAttribute("searchedRegex") SearchedRegex searchedRegex) {
         List<Word> matchingWords;
-        if (StringUtils.isNotEmpty(searchedRegex.getRegex())) {
+        if (isNotEmpty(searchedRegex.getRegex())) {
             matchingWords = wordsService.getMatchingWordsByRegex(searchedRegex.getRegex())
                     .stream()
                     .sorted(Comparator.comparingInt(String::length))
                     .map(Word::new).toList();
-            model.addAttribute("explanation", "Searched by " + searchedRegex.getRegex());
-        } else if (StringUtils.isNotEmpty(searchedRegex.getLetters())) {
+        } else if (isNotEmpty(searchedRegex.getLetters())) {
             matchingWords = wordsService.getMatchingWordsByLetters(searchedRegex.getLetters())
                     .stream()
                     .sorted(Comparator.comparingInt(String::length))
                     .map(Word::new).toList();
-            model.addAttribute("explanation", "Searched by " + searchedRegex.getLetters());
+        } else if (isNotEmpty(searchedRegex.getContaining())) {
+            matchingWords = wordsService.getMatchingWordsByContaining(searchedRegex.getContaining())
+                    .stream()
+                    .sorted(Comparator.comparingInt(String::length))
+                    .map(Word::new).toList();
         } else {
             return "index";
         }
         model.addAttribute("explanation", "Searched by "
-                + Stream.of(searchedRegex.getRegex(), searchedRegex.getLetters())
+                + Stream.of(searchedRegex.getRegex(), searchedRegex.getLetters(), searchedRegex.getContaining())
                 .filter(StringUtils::isNotEmpty).findFirst().get());
         model.addAttribute("matchingWords", matchingWords);
 

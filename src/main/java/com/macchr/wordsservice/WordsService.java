@@ -20,4 +20,8 @@ public class WordsService {
     public List<String> getMatchingWordsByLetters(String letters) {
         return getMatchingWordsByRegex(regexFactory.fromLetters(letters));
     }
+
+    public List<String> getMatchingWordsByContaining(String containing) {
+        return getMatchingWordsByRegex(regexFactory.containing(containing));
+    }
 }

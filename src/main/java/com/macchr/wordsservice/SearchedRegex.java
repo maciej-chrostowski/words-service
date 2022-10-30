@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class SearchedRegex {
     private String regex;
     private String letters;
+    private String containing;
 }

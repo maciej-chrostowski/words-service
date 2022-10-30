@@ -7,9 +7,11 @@
 <body>
 
 <form action="#" th:object="${searchedRegex}" method="post">
-    <input type="text" id="literal" name="literal" th:field="*{regex}" placeholder="regex">
+    <label>regex</label><input type="text" id="regex" name="regex" th:field="*{regex}">
     <br>
-    <input type="text" id="letters" name="letters" th:field="*{letters}" placeholder="letters">
+    <label>letters</label><input type="text" id="letters" name="letters" th:field="*{letters}">
+    <br>
+    <label>containing</label><input type="text" id="containing" name="containing" th:field="*{containing}">
     <br>
     <button type="submit" name="searchWords">Search</button> <p th:value="${explanation}"></p>
 </form>
