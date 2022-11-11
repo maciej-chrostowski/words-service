@@ -1,20 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Words</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-
-<form action="#" th:object="${searchedRegex}" method="post">
-    <label>regex</label><input type="text" id="regex" name="regex" th:field="*{regex}">
-    <br>
-    <label>letters</label><input type="text" id="letters" name="letters" th:field="*{letters}">
-    <br>
-    <label>containing</label><input type="text" id="containing" name="containing" th:field="*{containing}">
-    <br>
-    <button type="submit" name="searchWords">Search</button> <p th:value="${explanation}"></p>
-</form>
+<div class="container-fluid">
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        <form action="#" th:object="${searchedRegex}" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label>regex</label>
+                <input type="text" class="form-control" id="regex" name="regex" th:field="*{regex}">
+                <!--                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>-->
+            </div>
+            <div class="form-group">
+                <label>letters</label>
+                <input type="text" class="form-control" id="letters" name="letters" th:field="*{letters}">
+                <!--                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">-->
+            </div>
+            <div class="form-group">
+                <label>containing</label>
+                <input type="text" class="form-control" id="containing" name="containing" th:field="*{containing}">
+                <!--                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">-->
+            </div>
+            <div class="form-group">
+                <button type="submit" name="searchWords" class="btn btn-primary">Search</button>
+            </div>
+            <!--    <p th:value="${explanation}"></p>-->
+        </form>
+    </main>
+</div>
 
 <table>
     <tbody>
@@ -24,5 +42,14 @@
     </tbody>
 </table>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
